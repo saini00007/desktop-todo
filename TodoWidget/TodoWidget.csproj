@@ -1,0 +1,28 @@
+&lt;Project Sdk="Microsoft.NET.Sdk">
+  &lt;PropertyGroup>
+    &lt;OutputType>WinExe&lt;/OutputType>
+    &lt;TargetFramework>net7.0-windows10.0.22621.0&lt;/TargetFramework>
+    &lt;TargetPlatformMinVersion>10.0.17763.0&lt;/TargetPlatformMinVersion>
+    &lt;RootNamespace>TodoWidget&lt;/RootNamespace>
+    &lt;ApplicationManifest>app.manifest&lt;/ApplicationManifest>
+    &lt;Platforms>x86;x64;arm64&lt;/Platforms>
+    &lt;RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64&lt;/RuntimeIdentifiers>
+    &lt;UseWinUI>true&lt;/UseWinUI>
+    &lt;EnablePreviewMsixTooling>true&lt;/EnablePreviewMsixTooling>
+    &lt;WindowsPackageType>None&lt;/WindowsPackageType>
+    &lt;WindowsAppSDKSelfContained>true&lt;/WindowsAppSDKSelfContained>
+  &lt;/PropertyGroup>
+
+  &lt;ItemGroup>
+    &lt;PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231115000" />
+    &lt;PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.2428" />
+    &lt;PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    &lt;PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    &lt;PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+    &lt;PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+  &lt;/ItemGroup>
+
+  &lt;ItemGroup>
+    &lt;Content Include="Assets\**" />
+  &lt;/ItemGroup>
+&lt;/Project> 
