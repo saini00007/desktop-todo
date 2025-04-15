@@ -6,6 +6,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using TodoWidget.Models;
 using TodoWidget.Services;
+using Microsoft.UI.Windowing;
+using Microsoft.UI;
+using WinRT.Interop;
+using System.IO;
+using System.Diagnostics;
 
 namespace TodoWidget
 {
@@ -27,16 +32,21 @@ namespace TodoWidget
             LoadTasks();
 
             // Set up window properties for widget-like behavior
-            var windowId = Win32Interop.GetWindowIdFromWindow(WindowNative.GetWindowHandle(this));
-            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            var windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
             appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 400, Height = 600 });
             
-            // Set the window to be always on top
+            // Set the window to be always on top and ensure it's visible
             var presenter = appWindow.Presenter as OverlappedPresenter;
             presenter.IsAlwaysOnTop = true;
             presenter.IsResizable = true;
             presenter.IsMinimizable = true;
             presenter.IsMaximizable = false;
+            
+            // Make sure the window is visible
+            this.Activate();
+            appWindow.Show();
         }
 
         private void LoadLists()

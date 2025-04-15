@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TodoWidget.Models;
-using Windows.Storage;
 
 namespace TodoWidget.Services
 {
@@ -19,7 +18,7 @@ namespace TodoWidget.Services
 
         public TodoService()
         {
-            _dataFolder = Path.Combine(ApplicationData.Current.LocalFolder.Path, "TodoWidget");
+            _dataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoWidget");
             Directory.CreateDirectory(_dataFolder);
             LoadData();
         }

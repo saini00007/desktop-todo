@@ -11,6 +11,7 @@ namespace TodoWidget.Models
         public bool IsCompleted { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? DueDate { get; set; }
+        public string FormattedDueDate => DueDate.HasValue ? DueDate.Value.ToString("MMM dd") : string.Empty;
         public string ListId { get; set; }
         public List<string> Tags { get; set; } = new List<string>();
         public string Emoji { get; set; }

@@ -1,4 +1,6 @@
 using Microsoft.UI.Xaml;
+using System.IO;
+using System;
 
 namespace TodoWidget
 {
@@ -8,13 +10,32 @@ namespace TodoWidget
 
         public App()
         {
-            this.InitializeComponent();
+            try
+            {
+                File.WriteAllText("C:\\Users\\Public\\TodoWidget_log.txt", "App constructor called\n");
+                this.InitializeComponent();
+                File.AppendAllText("C:\\Users\\Public\\TodoWidget_log.txt", "App initialized\n");
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("C:\\Users\\Public\\TodoWidget_log.txt", "Error in App constructor: " + ex.ToString());
+            }
         }
 
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow();
-            m_window.Activate();
+            try
+            {
+                File.AppendAllText("C:\\Users\\Public\\TodoWidget_log.txt", "OnLaunched called\n");
+                m_window = new MainWindow();
+                File.AppendAllText("C:\\Users\\Public\\TodoWidget_log.txt", "MainWindow created\n");
+                m_window.Activate();
+                File.AppendAllText("C:\\Users\\Public\\TodoWidget_log.txt", "Window activated\n");
+            }
+            catch (Exception ex)
+            {
+                File.AppendAllText("C:\\Users\\Public\\TodoWidget_log.txt", "Error in OnLaunched: " + ex.ToString());
+            }
         }
     }
 } 

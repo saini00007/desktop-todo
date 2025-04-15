@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:local="using:TodoWidget"
     mc:Ignorable="d">
 
     <Grid Padding="12">
@@ -81,7 +82,7 @@
                                     <TextBlock Text="{Binding Emoji}"
                                                FontSize="14"
                                                VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding DueDate, StringFormat='{}{0:MMM dd}'}"
+                                    <TextBlock Text="{Binding FormattedDueDate}"
                                                Opacity="0.7"
                                                FontSize="12"
                                                VerticalAlignment="Center"/>
